@@ -1,6 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+
+
+<VBox maxHeight="800.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="77.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="85.0" layoutY="23.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="734.0" layoutY="23.0" mnemonicParsing="false" text="Button" />
+         </children>
+      </Pane>
+      <Pane prefHeight="728.0" prefWidth="1000.0">
+         <children>
+            <Canvas height="726.0" width="1000.0" />
+         </children>
+      </Pane>
+   </children>
+</VBox>

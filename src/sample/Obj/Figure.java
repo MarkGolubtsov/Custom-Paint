@@ -1,4 +1,5 @@
 package sample.Obj;
 
-public class Figure {
+
+abstract class Figure {
 }

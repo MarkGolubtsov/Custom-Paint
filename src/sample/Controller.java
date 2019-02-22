@@ -6,10 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
-import sample.Obj.Circle;
-import sample.Obj.Line;
-import sample.Obj.Rectangle;
-import sample.Obj.Square;
+import sample.Obj.*;
 
 
 public class Controller {
@@ -28,6 +25,7 @@ public class Controller {
     Rectangle rectangle=new Rectangle();
     Circle circle = new Circle();
     Square square = new Square();
+    Triangle triangle=new Triangle();
     double x1,y1,x2,y2;
 
 
@@ -41,7 +39,7 @@ public class Controller {
 
             x2 = mouseEvent.getSceneX();
             y2 = mouseEvent.getSceneY()-77;
-         rectangle.Draw(MainCanvas, x1, y1, x2, y2);
+         triangle.Draw(MainCanvas, x1, y1, x2, y2);
 
     }
 

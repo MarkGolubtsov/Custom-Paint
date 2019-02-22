@@ -26,6 +26,7 @@ public class Controller {
     Circle circle = new Circle();
     Square square = new Square();
     Triangle triangle=new Triangle();
+    RightArrow rightArrow = new RightArrow();
     double x1,y1,x2,y2;
 
 
@@ -39,7 +40,7 @@ public class Controller {
 
             x2 = mouseEvent.getSceneX();
             y2 = mouseEvent.getSceneY()-77;
-         triangle.Draw(MainCanvas, x1, y1, x2, y2);
+        rightArrow.Draw(MainCanvas, x1, y1, x2, y2);
 
     }
 

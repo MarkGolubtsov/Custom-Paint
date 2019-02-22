@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import sample.Obj.Circle;
 import sample.Obj.Line;
 import sample.Obj.Rectangle;
+import sample.Obj.Square;
 
 
 public class Controller {
@@ -26,6 +27,7 @@ public class Controller {
     Line line= new Line();
     Rectangle rectangle=new Rectangle();
     Circle circle = new Circle();
+    Square square = new Square();
     double x1,y1,x2,y2;
 
 
@@ -39,7 +41,7 @@ public class Controller {
 
             x2 = mouseEvent.getSceneX();
             y2 = mouseEvent.getSceneY()-77;
-        circle.Draw(MainCanvas, x1, y1, x2, y2);
+         rectangle.Draw(MainCanvas, x1, y1, x2, y2);
 
     }
 

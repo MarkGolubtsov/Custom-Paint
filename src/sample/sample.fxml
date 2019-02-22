@@ -9,9 +9,12 @@
    <children>
       <Pane prefHeight="77.0" prefWidth="600.0" style="-fx-background-color: red;">
          <children>
-            <Button layoutX="85.0" layoutY="23.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="538.0" layoutY="22.0" mnemonicParsing="false" text="Button" />
             <Button fx:id="Line1" layoutX="746.0" layoutY="22.0" mnemonicParsing="false" text="Button" />
-            <ColorPicker fx:id="GridColor" layoutX="230.0" layoutY="22.0" onAction="#ColorSet" />
+            <ColorPicker fx:id="GridColor" layoutX="144.0" layoutY="23.0" onAction="#ColorSetPen" />
+            <Label layoutX="77.0" layoutY="28.0" text="Контур" />
+            <ColorPicker fx:id="GridColorFill" layoutX="376.0" layoutY="23.0" onAction="#ColorSetFill" />
+            <Label layoutX="305.0" layoutY="27.0" text="Заливка" />
          </children>
       </Pane>
       <Pane prefHeight="728.0" prefWidth="1000.0">

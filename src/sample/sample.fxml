@@ -10,7 +10,8 @@
       <Pane prefHeight="77.0" prefWidth="600.0" style="-fx-background-color: red;">
          <children>
             <Button layoutX="85.0" layoutY="23.0" mnemonicParsing="false" text="Button" />
-            <Button fx:id="Line1" layoutX="746.0" layoutY="22.0" mnemonicParsing="false"  text="Button" />
+            <Button fx:id="Line1" layoutX="746.0" layoutY="22.0" mnemonicParsing="false" text="Button" />
+            <ColorPicker fx:id="GridColor" layoutX="230.0" layoutY="22.0" onAction="#ColorSet" />
          </children>
       </Pane>
       <Pane prefHeight="728.0" prefWidth="1000.0">

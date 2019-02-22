@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-
-<VBox maxHeight="800.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="800.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Pane prefHeight="77.0" prefWidth="600.0">
+      <Pane prefHeight="77.0" prefWidth="600.0" style="-fx-background-color: red;">
          <children>
             <Button layoutX="85.0" layoutY="23.0" mnemonicParsing="false" text="Button" />
-            <Button layoutX="734.0" layoutY="23.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="Line1" layoutX="746.0" layoutY="22.0" mnemonicParsing="false" onAction="#DrawLine" text="Button" />
          </children>
       </Pane>
       <Pane prefHeight="728.0" prefWidth="1000.0">
          <children>
-            <Canvas height="726.0" width="1000.0" />
+            <Canvas fx:id="MainCanvas" height="726.0" width="1000.0" />
          </children>
       </Pane>
    </children>

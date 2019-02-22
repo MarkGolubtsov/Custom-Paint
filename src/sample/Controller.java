@@ -6,6 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import sample.Obj.*;
 
 
@@ -21,26 +22,28 @@ public class Controller {
     @FXML
     ColorPicker GridColorFill;
 
-    Line line= new Line();
-    Rectangle rectangle=new Rectangle();
-    Circle circle = new Circle();
-    Square square = new Square();
-    Triangle triangle=new Triangle();
-    RightArrow rightArrow = new RightArrow();
-    double x1,y1,x2,y2;
+    private  AllFigure allFigure = new AllFigure();
+    private  Figure chose;
+    private double x1,y1,x2,y2;
 
-
+    @FXML
+    public void initialize() {
+        chose=allFigure.getLine();
+        GridColor.setValue(Color.BLACK);
+        GridColorFill.setValue(Color.BLACK);
+    }
 
     public void handle(MouseEvent mouseEvent) {
            x1 =mouseEvent.getSceneX();
-           y1=mouseEvent.getSceneY()-77;
+           y1=mouseEvent.getSceneY()-125;
         }
 
     public void handle1(MouseEvent mouseEvent) {
 
             x2 = mouseEvent.getSceneX();
-            y2 = mouseEvent.getSceneY()-77;
-        rightArrow.Draw(MainCanvas, x1, y1, x2, y2);
+            y2 = mouseEvent.getSceneY()-125;
+
+         chose.Draw(MainCanvas, x1, y1, x2, y2);
 
     }
 
@@ -50,5 +53,28 @@ public class Controller {
 
     public void ColorSetFill(ActionEvent actionEvent) {
         MainCanvas.getGraphicsContext2D().setFill(GridColorFill.getValue());//заливка
+    }
+
+    public void ChooseLine(ActionEvent actionEvent) {
+        chose=allFigure.getLine();
+    }
+
+
+    public void ChooseSquare(ActionEvent actionEvent) {
+        chose=allFigure.getSquare();
+    }
+
+    public void ChooseCircle(ActionEvent actionEvent) {
+        chose=allFigure.getCircle();
+    }
+
+    public void ChooseRectangle(ActionEvent actionEvent) {
+        chose=allFigure.getRectangle();
+    }
+    public void ChooseRightArrow(ActionEvent actionEvent) {
+        chose=allFigure.getRightArrow();
+    }
+    public void ChooseTriangle(ActionEvent actionEvent) {
+        chose=allFigure.getTriangle();
     }
 }

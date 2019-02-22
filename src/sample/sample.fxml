@@ -7,17 +7,21 @@
 
 <VBox maxHeight="800.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Pane prefHeight="77.0" prefWidth="600.0" style="-fx-background-color: red;">
+      <Pane prefHeight="167.0" prefWidth="1000.0" style="-fx-background-color: silver;">
          <children>
-            <Button layoutX="538.0" layoutY="22.0" mnemonicParsing="false" text="Button" />
-            <Button fx:id="Line1" layoutX="746.0" layoutY="22.0" mnemonicParsing="false" text="Button" />
-            <ColorPicker fx:id="GridColor" layoutX="144.0" layoutY="23.0" onAction="#ColorSetPen" />
-            <Label layoutX="77.0" layoutY="28.0" text="Контур" />
-            <ColorPicker fx:id="GridColorFill" layoutX="376.0" layoutY="23.0" onAction="#ColorSetFill" />
-            <Label layoutX="305.0" layoutY="27.0" text="Заливка" />
+            <Button layoutX="492.0" layoutY="23.0" mnemonicParsing="false" onAction="#ChooseSquare" text="Квадрат" />
+            <Button fx:id="Line1" layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#ChooseLine" text="Линия" />
+            <ColorPicker fx:id="GridColor" layoutX="86.0" layoutY="8.0" onAction="#ColorSetPen" />
+            <Label layoutX="14.0" layoutY="13.0" text="Контур" />
+            <ColorPicker fx:id="GridColorFill" layoutX="86.0" layoutY="39.0" onAction="#ColorSetFill" />
+            <Label layoutX="10.0" layoutY="44.0" text="Заливка" />
+            <Button layoutX="649.0" layoutY="23.0" mnemonicParsing="false" onAction="#ChooseCircle" text="Круг" />
+            <Button layoutX="710.0" layoutY="24.0" mnemonicParsing="false" onAction="#ChooseTriangle" text="Треугольник" />
+            <Button layoutX="827.0" layoutY="23.0" mnemonicParsing="false" onAction="#ChooseRectangle" text="Прямоугольник" />
+            <Button layoutX="343.0" layoutY="22.0" mnemonicParsing="false" onAction="#ChooseRightArrow" text="Стрелка вправо" />
          </children>
       </Pane>
-      <Pane prefHeight="728.0" prefWidth="1000.0">
+      <Pane prefHeight="728.0" prefWidth="1000.0" style="-fx-background-color: white;">
          <children>
             <Canvas fx:id="MainCanvas" height="726.0" onMousePressed="#handle" onMouseReleased="#handle1" width="1000.0" />
          </children>

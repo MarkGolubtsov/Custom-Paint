@@ -5,9 +5,9 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import sample.Temp;
 
-abstract class Figure {
+ public  class Figure {
 
-    abstract  public void Draw(Canvas canvas,double x1, double y1, double x2,double y2);
+    public  void Draw(Canvas canvas, double x1, double y1, double x2, double y2){}
 
     public Temp swap(double x1, double y1, double x2, double y2)
     {

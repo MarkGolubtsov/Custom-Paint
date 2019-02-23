@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import sample.Obj.*;
 
 
@@ -23,6 +24,7 @@ public class Controller {
     ColorPicker GridColorFill;
 
     private  AllFigure allFigure = new AllFigure();
+
     private  Figure chose;
     private double x1,y1,x2,y2;
 
@@ -30,12 +32,14 @@ public class Controller {
     public void initialize() {
         chose=allFigure.getLine();
         GridColor.setValue(Color.BLACK);
-        GridColorFill.setValue(Color.BLACK);
+        GridColorFill.setValue(Color.WHITE);
+        MainCanvas.getGraphicsContext2D().setFill(Paint.valueOf("white"));
     }
 
     public void handle(MouseEvent mouseEvent) {
            x1 =mouseEvent.getSceneX();
            y1=mouseEvent.getSceneY()-125;
+
         }
 
     public void handle1(MouseEvent mouseEvent) {
@@ -56,6 +60,7 @@ public class Controller {
     }
 
     public void ChooseLine(ActionEvent actionEvent) {
+
         chose=allFigure.getLine();
     }
 

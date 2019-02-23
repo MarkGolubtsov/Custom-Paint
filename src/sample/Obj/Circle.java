@@ -1,7 +1,11 @@
 package sample.Obj;
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import sample.Temp;
+
+import java.awt.*;
 
 public class Circle extends Figure {
     @Override
@@ -12,6 +16,8 @@ public class Circle extends Figure {
         y1=t1.getY1();
         y2=t1.getY2();
 
-        canvas.getGraphicsContext2D().fillOval(x1,y1,Math.abs(x1-x2),Math.abs(y2-y1));
+        canvas.getGraphicsContext2D().strokeOval(x1,y1,Math.abs(x1-x2),Math.abs(y2-y1));
+        //canvas.getGraphicsContext2D().fillOval(x1,y1,Math.abs(x1-x2),Math.abs(y2-y1));
+
     }
 }

@@ -50,6 +50,18 @@ public class Controller {
          chose.Draw(MainCanvas, x1, y1, x2, y2);
 
     }
+    public  void Test1(ActionEvent actionEvent){
+        allFigure.getLine().Draw(MainCanvas,20,20,30,30);
+        allFigure.getRectangle().Draw(MainCanvas,40,40,100,100);
+        allFigure.getRightArrow().Draw(MainCanvas,100,100,250,250);
+        allFigure.getCircle().Draw(MainCanvas,230,200,280,250);
+        allFigure.getSquare().Draw(MainCanvas,300,200,380,270);
+        allFigure.getTriangle().Draw(MainCanvas,500,200,700,400);
+    }
+    public  void Clear(ActionEvent actionEvent)
+    {
+        MainCanvas.getGraphicsContext2D().clearRect(0,0,1000,681);
+    }
 
     public void ColorSetPen(ActionEvent actionEvent) {
         MainCanvas.getGraphicsContext2D().setStroke(GridColor.getValue());//контур

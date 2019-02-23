@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class AllFigure {
 
-    /*public  ArrayList<Figure> All = new ArrayList<Figure>(){{
+    public  ArrayList<Figure> All = new ArrayList<Figure>(){{
         add(new Circle());
         add(new Line());
         add(new Rectangle());
@@ -15,8 +15,8 @@ public class AllFigure {
         add(new Triangle());
         add(new RightArrow());
     }};
-*/
-    public Circle getCircle() {
+
+   /* public Circle getCircle() {
         return circle;
     }
 
@@ -62,14 +62,14 @@ public class AllFigure {
 
     public void setTriangle(Triangle triangle) {
         this.triangle = triangle;
-    }
+    }*/
 
-
+/*
     private Circle circle = new Circle();
     private Line line = new Line();
     private Rectangle rectangle= new Rectangle();
     private RightArrow rightArrow = new RightArrow();
     private Square square = new Square();
     private Triangle triangle= new Triangle();
-    private ArrayList<Figure> New = new ArrayList<Figure>();
+    private ArrayList<Figure> New = new ArrayList<Figure>();*/
 }

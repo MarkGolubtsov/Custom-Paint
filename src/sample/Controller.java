@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -27,14 +28,14 @@ public class Controller {
 
     private  Figure chose;
     private double x1,y1,x2,y2;
-
     @FXML
     public void initialize() {
-        chose=allFigure.getLine();
+        chose=allFigure.All.get(2);
         GridColor.setValue(Color.BLACK);
         GridColorFill.setValue(Color.WHITE);
         MainCanvas.getGraphicsContext2D().setFill(Paint.valueOf("white"));
     }
+
 
     public void handle(MouseEvent mouseEvent) {
            x1 =mouseEvent.getSceneX();
@@ -51,12 +52,19 @@ public class Controller {
 
     }
     public  void Test1(ActionEvent actionEvent){
-        allFigure.getLine().Draw(MainCanvas,20,20,30,30);
+       /* allFigure.getLine().Draw(MainCanvas,20,20,30,30);
         allFigure.getRectangle().Draw(MainCanvas,40,40,100,100);
         allFigure.getRightArrow().Draw(MainCanvas,100,100,250,250);
         allFigure.getCircle().Draw(MainCanvas,230,200,280,250);
         allFigure.getSquare().Draw(MainCanvas,300,200,380,270);
-        allFigure.getTriangle().Draw(MainCanvas,500,200,700,400);
+        allFigure.getTriangle().Draw(MainCanvas,500,200,700,400);*/
+
+        allFigure.All.get(0).Draw(MainCanvas,20,20,30,30);
+        allFigure.All.get(1).Draw(MainCanvas,40,40,100,100);
+        allFigure.All.get(2).Draw(MainCanvas,120,100,250,270);
+        allFigure.All.get(3).Draw(MainCanvas,230,200,280,250);
+        allFigure.All.get(4).Draw(MainCanvas,300,200,380,270);
+        allFigure.All.get(5).Draw(MainCanvas,500,200,700,400);
     }
     public  void Clear(ActionEvent actionEvent)
     {
@@ -73,25 +81,34 @@ public class Controller {
 
     public void ChooseLine(ActionEvent actionEvent) {
 
-        chose=allFigure.getLine();
+        /*chose=allFigure.getLine();*/
+        chose=allFigure.All.get(1);
     }
 
 
     public void ChooseSquare(ActionEvent actionEvent) {
-        chose=allFigure.getSquare();
+        //chose=allFigure.getSquare();
+        chose=allFigure.All.get(3);
     }
 
     public void ChooseCircle(ActionEvent actionEvent) {
-        chose=allFigure.getCircle();
+        //chose=allFigure.getCircle();
+        chose=allFigure.All.get(0);
     }
 
     public void ChooseRectangle(ActionEvent actionEvent) {
-        chose=allFigure.getRectangle();
+
+        //chose=allFigure.getRectangle();
+        chose=allFigure.All.get(2);
     }
     public void ChooseRightArrow(ActionEvent actionEvent) {
-        chose=allFigure.getRightArrow();
+
+        //chose=allFigure.getRightArrow();
+        chose=allFigure.All.get(5);
     }
     public void ChooseTriangle(ActionEvent actionEvent) {
-        chose=allFigure.getTriangle();
-    }
+
+        //chose=allFigure.getTriangle();
+        chose=allFigure.All.get(4);
+        }
 }

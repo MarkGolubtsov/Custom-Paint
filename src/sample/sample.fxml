@@ -13,8 +13,8 @@
             <Button id="button" fx:id="Line1" layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#ChooseLine" style="-fx-background-radius: 60;" styleClass="button" text="Линия" />
             <ColorPicker fx:id="GridColor" layoutX="86.0" layoutY="8.0" onAction="#ColorSetPen" />
             <Label layoutX="14.0" layoutY="13.0" text="Контур" />
-            <ColorPicker fx:id="GridColorFill" layoutX="86.0" layoutY="39.0" onAction="#ColorSetFill" />
-            <Label layoutX="10.0" layoutY="44.0" text="Заливка" />
+            <ColorPicker fx:id="GridColorFill" disable="true" layoutX="86.0" layoutY="39.0" onAction="#ColorSetFill" />
+            <Label disable="true" layoutX="10.0" layoutY="44.0" text="Заливка" />
             <Button layoutX="649.0" layoutY="23.0" mnemonicParsing="false" onAction="#ChooseCircle" style="-fx-background-radius: 60;" styleClass="button" text="Круг" />
             <Button layoutX="710.0" layoutY="24.0" mnemonicParsing="false" onAction="#ChooseTriangle" style="-fx-background-radius: 60;" text="Треугольник" />
             <Button layoutX="827.0" layoutY="23.0" mnemonicParsing="false" onAction="#ChooseRectangle" style="-fx-background-radius: 60;" text="Прямоугольник" />

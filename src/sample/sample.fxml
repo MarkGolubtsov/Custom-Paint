@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
@@ -9,18 +11,24 @@
    <children>
       <Pane prefHeight="167.0" prefWidth="1000.0" style="-fx-background-color: silver;">
          <children>
-            <Button layoutX="472.0" layoutY="24.0" mnemonicParsing="false" onAction="#ChooseSquare" style="-fx-background-radius: 60;" text="Квадрат" />
-            <Button id="button" fx:id="Line1" layoutX="575.0" layoutY="23.0" mnemonicParsing="false" onAction="#ChooseLine" style="-fx-background-radius: 60;" styleClass="button" text="Линия" />
+            <Button layoutX="388.0" layoutY="22.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#ChooseSquare" prefHeight="50.0" prefWidth="50.0" stylesheets="@cssFigure/buttonSq.css">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></Button>
+            <Button fx:id="Line1" layoutX="450.0" layoutY="23.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#ChooseLine" prefHeight="50.0" prefWidth="50.0" styleClass="button" stylesheets="@cssFigure/LineButton.css" />
             <ColorPicker fx:id="GridColor" layoutX="86.0" layoutY="8.0" onAction="#ColorSetPen" />
             <Label layoutX="14.0" layoutY="13.0" text="Контур" />
-            <ColorPicker fx:id="GridColorFill" disable="true" layoutX="86.0" layoutY="39.0" onAction="#ColorSetFill" />
+            <ColorPicker fx:id="GridColorFill" disable="true" editable="true" layoutX="86.0" layoutY="39.0" onAction="#ColorSetFill" />
             <Label disable="true" layoutX="10.0" layoutY="44.0" text="Заливка" />
-            <Button layoutX="649.0" layoutY="23.0" mnemonicParsing="false" onAction="#ChooseCircle" style="-fx-background-radius: 60;" styleClass="button" text="Элипс" />
-            <Button layoutX="710.0" layoutY="24.0" mnemonicParsing="false" onAction="#ChooseTriangle" style="-fx-background-radius: 60;" text="Треугольник" />
-            <Button layoutX="827.0" layoutY="23.0" mnemonicParsing="false" onAction="#ChooseRectangle" style="-fx-background-radius: 60;" text="Прямоугольник" />
-            <Button layoutX="332.0" layoutY="24.0" mnemonicParsing="false" onAction="#ChooseRightArrow" style="-fx-background-radius: 60;" text="Стрелка вправо" />
-            <Button layoutX="584.0" layoutY="70.0" mnemonicParsing="false" onAction="#Test1" text="Тест" />
-            <Button layoutX="667.0" layoutY="70.0" mnemonicParsing="false" onAction="#Clear" text="Очистить" />
+            <Button layoutX="670.0" layoutY="23.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#ChooseCircle" prefHeight="50.0" prefWidth="50.0" styleClass="button" stylesheets="@cssFigure/ser.css" />
+            <Button layoutX="594.0" layoutY="24.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#ChooseTriangle" prefHeight="50.0" prefWidth="50.0" stylesheets="@cssFigure/Tr.css" />
+            <Button layoutX="518.0" layoutY="23.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#ChooseRectangle" prefHeight="50.0" prefWidth="50.0" stylesheets="@cssFigure/Rec.css" />
+            <Button layoutX="325.0" layoutY="23.0" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#ChooseRightArrow" prefHeight="50.0" prefWidth="50.0">
+               <stylesheets>
+                  <URL value="@cssFigure/Ar.css" />
+               </stylesheets></Button>
+            <Button layoutX="845.0" layoutY="26.0" mnemonicParsing="false" onAction="#Test1" prefHeight="43.0" prefWidth="78.0" stylesheets="@cssButton/button.css" text="Тест" />
+            <Button layoutX="742.0" layoutY="26.0" mnemonicParsing="false" onAction="#Clear" prefHeight="43.0" prefWidth="87.0" stylesheets="@cssButton/button.css" text="Очистить" />
          </children>
       </Pane>
       <Pane prefHeight="728.0" prefWidth="1000.0" style="-fx-background-color: white;">

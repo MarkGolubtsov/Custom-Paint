@@ -1,0 +1,4 @@
+.button {
+    -fx-cursor: hand;
+    -fx-background-image:url("rec.png");
+}

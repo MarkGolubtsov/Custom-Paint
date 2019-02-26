@@ -7,9 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import sample.Obj.*;
+
+import java.awt.*;
 
 
 public class Controller {
@@ -21,6 +24,8 @@ public class Controller {
 
     @FXML
     ColorPicker GridColor;
+    @FXML
+    Slider SliderS;
     @FXML
     ColorPicker GridColorFill;
 
@@ -47,8 +52,18 @@ public class Controller {
 
             x2 = mouseEvent.getSceneX();
             y2 = mouseEvent.getSceneY()-125;
-
-         chose.Draw(MainCanvas, x1, y1, x2, y2);
+                double temp;
+                    if (y2<y1) {
+                    temp =y2;
+                    y2=y1;
+                    y1=temp;
+                }
+                if (x2<x1) {
+                    temp =x2;
+                    x2=x1;
+                    x1=temp;
+                }
+            chose.Draw(MainCanvas, x1, y1, x2, y2);
 
     }
     public  void Test1(ActionEvent actionEvent){
@@ -73,6 +88,7 @@ public class Controller {
 
     public void ColorSetPen(ActionEvent actionEvent) {
         MainCanvas.getGraphicsContext2D().setStroke(GridColor.getValue());//контур
+
     }
 
     public void ColorSetFill(ActionEvent actionEvent) {
@@ -111,4 +127,9 @@ public class Controller {
         //chose=allFigure.getTriangle();
         chose=allFigure.All.get(4);
         }
+
+    public void Scroll(MouseEvent mouseEvent) {
+        Stroke stroke = new BasicStroke((float) SliderS.getValue());
+        MainCanvas.getGraphicsContext2D().setStroke((Paint) stroke);
+    }
 }

@@ -4,10 +4,17 @@ package sample.Obj;
 import javafx.scene.canvas.Canvas;
 import sample.Point;
 
-public abstract   class Figure {
+import java.io.Serializable;
 
-    public Point fist = new Point();
-    public Point second= new Point();
+public abstract   class Figure implements Serializable {
+
+    Figure()
+    {
+        fist = new Point();
+        second = new Point();
+    }
+    public Point fist;
+    public Point second;
     public abstract   void Draw(Canvas canvas);
     public void   swap()
     {
@@ -23,4 +30,8 @@ public abstract   class Figure {
             fist.x=temp;
         }
     }
+    public  abstract Figure factor();
+
+    ;
+
 }

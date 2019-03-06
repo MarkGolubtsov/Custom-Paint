@@ -11,4 +11,9 @@ public class Circle extends Figure {
         //canvas.getGraphicsContext2D().fillOval(fist.x,fist.y,Math.abs(fist.x-second.x),Math.abs(second.y-fist.y));
 
     }
+
+    @Override
+    public Figure factor() {
+        return new Circle();
+    }
 }

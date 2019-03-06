@@ -9,4 +9,9 @@ public class Line extends Figure {
       canvas.getGraphicsContext2D().strokeLine(fist.x,fist.y,second.x,second.y);
 
     }
+
+    @Override
+    public Figure factor() {
+        return new Line();
+    }
 }

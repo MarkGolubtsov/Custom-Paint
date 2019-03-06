@@ -13,6 +13,11 @@ import sample.Obj.*;
 import sample.Obj.Rectangle;
 
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 
 public class Controller {
@@ -54,26 +59,21 @@ public class Controller {
 
             x2 = mouseEvent.getSceneX();
             y2 = mouseEvent.getSceneY()-125;
-
+            chose=chose.factor();
             chose.fist.x=x1;
-
             chose.fist.y=y1;
             chose.second.x=x2;
             chose.second.y=y2;
             chose.Draw(MainCanvas);
+            allFigure.addFigure(chose);
+
 
     }
-    public  void Test1(ActionEvent actionEvent){
-       /* allFigure.getLine().Draw(MainCanvas,20,20,30,30);
-        allFigure.getRectangle().Draw(MainCanvas,40,40,100,100);
-        allFigure.getRightArrow().Draw(MainCanvas,100,100,250,250);
-        allFigure.getCircle().Draw(MainCanvas,230,200,280,250);
-        allFigure.getSquare().Draw(MainCanvas,300,200,380,270);
-        allFigure.getTriangle().Draw(MainCanvas,500,200,700,400);*/
-    }
+
     public  void Clear(ActionEvent actionEvent)
     {
         MainCanvas.getGraphicsContext2D().clearRect(0,0,1000,681);
+        allFigure.getAll().clear();
     }
 
     public void ColorSetPen(ActionEvent actionEvent) {
@@ -89,37 +89,73 @@ public class Controller {
 
         /*chose=allFigure.getLine();*/
         chose=new Line();
+
     }
 
 
     public void ChooseSquare(ActionEvent actionEvent) {
         //chose=allFigure.getSquare();
         chose = new Square();
+
     }
 
     public void ChooseCircle(ActionEvent actionEvent) {
         //chose=allFigure.getCircle();
        chose=new Circle();
+
     }
 
     public void ChooseRectangle(ActionEvent actionEvent) {
 
         //chose=allFigure.getRectangle();
         chose= new Rectangle();
+
     }
     public void ChooseRightArrow(ActionEvent actionEvent) {
 
         //chose=allFigure.getRightArrow();
         chose=new RightArrow();
+
     }
     public void ChooseTriangle(ActionEvent actionEvent) {
 
         //chose=allFigure.getTriangle();
         chose=new Triangle();
+
         }
 
-    public void Scroll(MouseEvent mouseEvent) {
-        Stroke stroke = new BasicStroke((float) SliderS.getValue());
-        MainCanvas.getGraphicsContext2D().setStroke((Paint) stroke);
+
+
+    public void SaveAll(ActionEvent actionEvent) {
+        ArrayList<Figure> all= allFigure.getAll();
+        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("figure.dat")))
+        {
+
+                oos.writeObject(all);
+        }
+        catch(Exception ex){
+
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    public void ReadAll(ActionEvent actionEvent) {
+
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("figure.dat")))
+        {
+           allFigure.setAll((ArrayList<Figure>)ois.readObject());
+        }
+        catch(Exception ex){
+
+            System.out.println(ex.getMessage());
+        }
+       System.out.println(allFigure.getAll().size());
+
+        for(Figure i:allFigure.getAll()){
+            i.Draw(MainCanvas);
+
+
+        }
     }
 }

@@ -17,4 +17,9 @@ public class RightArrow extends Figure {
         canvas.getGraphicsContext2D().strokeLine(fist.x+(second.x-fist.x)*5/8,second.y,fist.x+(second.x-fist.x)*5/8,fist.y+(second.y-fist.y)*3/4);
 
     }
+
+    @Override
+    public Figure factor() {
+        return new RightArrow();
+    }
 }

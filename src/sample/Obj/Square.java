@@ -16,4 +16,9 @@ public class Square extends Figure {
             canvas.getGraphicsContext2D().strokeRect(fist.x, fist.y, Math.abs(fist.x - second.x), Math.abs(fist.x - second.x));
         }
     }
+
+    @Override
+    public Figure factor() {
+        return new Square();
+    }
 }

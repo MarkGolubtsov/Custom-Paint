@@ -4,27 +4,17 @@ import javafx.scene.canvas.Canvas;
 
 public class RightArrow extends Figure {
     @Override
-    public void Draw(Canvas canvas, double x1, double y1, double x2, double y2) {
+    public void Draw(Canvas canvas) {
 
-        double temp;
-        if (y2<y1) {
-            temp =y2;
-            y2=y1;
-            y1=temp;
-        }
-        if (x2<x1) {
-            temp =x2;
-            x2=x1;
-            x1=temp;
-        }
-        canvas.getGraphicsContext2D().strokeLine(x1, y1+(y2-y1)/4,x1,y1+(y2-y1)*3/4);
-        canvas.getGraphicsContext2D().strokeLine(x1,y1+(y2-y1)*3/4,x1+(x2-x1)*5/8,y1+(y2-y1)*3/4);
-        canvas.getGraphicsContext2D().strokeLine(x1+(x2-x1)*5/8,y1+(y2-y1)/2,x1+(x2-x1)*5/8,y1+(y2-y1)/2);
-        canvas.getGraphicsContext2D().strokeLine(x1, y1+(y2-y1)/4,x1+(x2-x1)*5/8,y1+(y2-y1)/4);
-        canvas.getGraphicsContext2D().strokeLine(x2,y1+(y2-y1)/2,x1+(x2-x1)*5/8,y1);
-        canvas.getGraphicsContext2D().strokeLine(x2,y1+(y2-y1)/2,x1+(x2-x1)*5/8,y2);
-        canvas.getGraphicsContext2D().strokeLine(x1+(x2-x1)*5/8,y1,x1+(x2-x1)*5/8,y1+(y2-y1)/4);
-        canvas.getGraphicsContext2D().strokeLine(x1+(x2-x1)*5/8,y2,x1+(x2-x1)*5/8,y1+(y2-y1)*3/4);
+             swap();
+        canvas.getGraphicsContext2D().strokeLine(fist.x, fist.y+(second.y-fist.y)/4,fist.x,fist.y+(second.y-fist.y)*3/4);
+        canvas.getGraphicsContext2D().strokeLine(fist.x,fist.y+(second.y-fist.y)*3/4,fist.x+(second.x-fist.x)*5/8,fist.y+(second.y-fist.y)*3/4);
+        canvas.getGraphicsContext2D().strokeLine(fist.x+(second.x-fist.x)*5/8,fist.y+(second.y-fist.y)/2,fist.x+(second.x-fist.x)*5/8,fist.y+(second.y-fist.y)/2);
+        canvas.getGraphicsContext2D().strokeLine(fist.x, fist.y+(second.y-fist.y)/4,fist.x+(second.x-fist.x)*5/8,fist.y+(second.y-fist.y)/4);
+        canvas.getGraphicsContext2D().strokeLine(second.x,fist.y+(second.y-fist.y)/2,fist.x+(second.x-fist.x)*5/8,fist.y);
+        canvas.getGraphicsContext2D().strokeLine(second.x,fist.y+(second.y-fist.y)/2,fist.x+(second.x-fist.x)*5/8,second.y);
+        canvas.getGraphicsContext2D().strokeLine(fist.x+(second.x-fist.x)*5/8,fist.y,fist.x+(second.x-fist.x)*5/8,fist.y+(second.y-fist.y)/4);
+        canvas.getGraphicsContext2D().strokeLine(fist.x+(second.x-fist.x)*5/8,second.y,fist.x+(second.x-fist.x)*5/8,fist.y+(second.y-fist.y)*3/4);
 
     }
 }

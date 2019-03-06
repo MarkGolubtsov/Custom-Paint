@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import sample.Obj.*;
+import sample.Obj.Rectangle;
 
 import java.awt.*;
 
@@ -36,7 +37,7 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        chose=allFigure.All.get(2);
+        chose=new Line();
         GridColor.setValue(Color.BLACK);
         GridColorFill.setValue(Color.WHITE);
         MainCanvas.getGraphicsContext2D().setFill(Paint.valueOf("white"));
@@ -53,7 +54,13 @@ public class Controller {
 
             x2 = mouseEvent.getSceneX();
             y2 = mouseEvent.getSceneY()-125;
-            chose.Draw(MainCanvas, x1, y1, x2, y2);
+
+            chose.fist.x=x1;
+
+            chose.fist.y=y1;
+            chose.second.x=x2;
+            chose.second.y=y2;
+            chose.Draw(MainCanvas);
 
     }
     public  void Test1(ActionEvent actionEvent){
@@ -63,13 +70,6 @@ public class Controller {
         allFigure.getCircle().Draw(MainCanvas,230,200,280,250);
         allFigure.getSquare().Draw(MainCanvas,300,200,380,270);
         allFigure.getTriangle().Draw(MainCanvas,500,200,700,400);*/
-
-        allFigure.All.get(0).Draw(MainCanvas,20,20,30,30);
-        allFigure.All.get(1).Draw(MainCanvas,40,40,100,100);
-        allFigure.All.get(2).Draw(MainCanvas,120,100,250,270);
-        allFigure.All.get(3).Draw(MainCanvas,230,200,280,250);
-        allFigure.All.get(4).Draw(MainCanvas,300,200,380,270);
-        allFigure.All.get(5).Draw(MainCanvas,500,200,700,400);
     }
     public  void Clear(ActionEvent actionEvent)
     {
@@ -88,34 +88,34 @@ public class Controller {
     public void ChooseLine(ActionEvent actionEvent) {
 
         /*chose=allFigure.getLine();*/
-        chose=allFigure.All.get(1);
+        chose=new Line();
     }
 
 
     public void ChooseSquare(ActionEvent actionEvent) {
         //chose=allFigure.getSquare();
-        chose=allFigure.All.get(3);
+        chose = new Square();
     }
 
     public void ChooseCircle(ActionEvent actionEvent) {
         //chose=allFigure.getCircle();
-        chose=allFigure.All.get(0);
+       chose=new Circle();
     }
 
     public void ChooseRectangle(ActionEvent actionEvent) {
 
         //chose=allFigure.getRectangle();
-        chose=allFigure.All.get(2);
+        chose= new Rectangle();
     }
     public void ChooseRightArrow(ActionEvent actionEvent) {
 
         //chose=allFigure.getRightArrow();
-        chose=allFigure.All.get(5);
+        chose=new RightArrow();
     }
     public void ChooseTriangle(ActionEvent actionEvent) {
 
         //chose=allFigure.getTriangle();
-        chose=allFigure.All.get(4);
+        chose=new Triangle();
         }
 
     public void Scroll(MouseEvent mouseEvent) {

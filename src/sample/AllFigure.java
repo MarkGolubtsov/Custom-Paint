@@ -8,12 +8,6 @@ import java.util.ArrayList;
 public class AllFigure {
 
     public  ArrayList<Figure> All = new ArrayList<Figure>(){{
-        add(new Circle());
-        add(new Line());
-        add(new Rectangle());
-        add(new Square());
-        add(new Triangle());
-        add(new RightArrow());
     }};
 
    /* public Circle getCircle() {

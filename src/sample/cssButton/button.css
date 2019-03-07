@@ -1,10 +1,30 @@
 
-.button {
-    -fx-background-color: #e4e4e4;
+.button1 {
+    -fx-background-color: #8ab3e4;
     -fx-background-radius: 100px;
 }
 
-.button:hover {
-    -fx-background-color:#777;
+.button1:hover {
+    -fx-background-color: #3a54e4;
 }
 
+.buttonClear {
+    -fx-background-color: #e48b80;
+    -fx-background-radius: 100px;
+ }
+.buttonClear:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #e45d4e;
+    -fx-background-radius: 100px;
+}
+
+.buttonSave{
+    -fx-background-color: #afff63;
+    -fx-background-radius: 100px;
+}
+
+.buttonSave:hover{
+    -fx-background-color: green;
+    -fx-background-size: 30;
+    -fx-background-radius: 100px;
+}

@@ -1,6 +1,7 @@
 package sample.Obj;
 
 
+import com.google.gson.annotations.SerializedName;
 import javafx.scene.canvas.Canvas;
 import sample.Point;
 
@@ -8,13 +9,31 @@ import java.io.Serializable;
 
 public abstract   class Figure implements Serializable {
 
-    Figure()
-    {
-        fist = new Point();
-        second = new Point();
+    @SerializedName("type")
+    private String typeName;
+
+    public Point getFist() {
+        return fist;
     }
-    public Point fist;
-    public Point second;
+
+    public void setFist(Point fist) {
+        this.fist = fist;
+    }
+
+    public Point getSecond() {
+        return second;
+    }
+
+    Figure(){
+    typeName=getClass().getName();
+    }
+    public void setSecond(Point second) {
+        this.second = second;
+    }
+
+    public Point fist= new Point();
+
+    public Point second =new Point();
     public abstract   void Draw(Canvas canvas);
     public void   swap()
     {
@@ -32,6 +51,5 @@ public abstract   class Figure implements Serializable {
     }
     public  abstract Figure factor();
 
-    ;
 
 }

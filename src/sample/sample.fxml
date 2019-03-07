@@ -27,8 +27,10 @@
                <stylesheets>
                   <URL value="@cssFigure/Ar.css" />
                </stylesheets></Button>
-            <Button layoutX="490.0" layoutY="23.0" mnemonicParsing="false" onAction="#Test1" prefHeight="43.0" prefWidth="78.0" stylesheets="@cssButton/button.css" text="Тест" />
-            <Button layoutX="899.0" layoutY="65.0" mnemonicParsing="false" onAction="#Clear" prefHeight="43.0" prefWidth="87.0" stylesheets="@cssButton/button.css" text="Очистить" />
+            <Button layoutX="847.0" layoutY="65.0" mnemonicParsing="false" onAction="#Clear" prefHeight="43.0" prefWidth="106.0" styleClass="buttonClear" stylesheets="@cssButton/button.css" text="Очистить" />
+            <Button layoutX="847.0" layoutY="13.0" mnemonicParsing="false" onAction="#SaveAll" prefHeight="43.0" prefWidth="106.0" styleClass="buttonSave" stylesheets="@cssButton/button.css" text="Сохранить" />
+            <Button layoutX="728.0" layoutY="13.0" mnemonicParsing="false" onAction="#ReadAll" prefHeight="43.0" prefWidth="106.0" styleClass="button1" stylesheets="@cssButton/button.css" text="Загрузить" />
+            <Button layoutX="738.0" layoutY="65.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="43.0" prefWidth="96.0" styleClass="buttonClear" stylesheets="@cssButton/button.css" text="Отмена" />
          </children>
       </Pane>
       <Pane prefHeight="728.0" prefWidth="1000.0" style="-fx-background-color: white;">

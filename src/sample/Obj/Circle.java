@@ -16,4 +16,8 @@ public class Circle extends Figure {
     public Figure factor() {
         return new Circle();
     }
+
+
+
+
 }

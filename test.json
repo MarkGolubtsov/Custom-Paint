@@ -1,1 +1,13 @@
-[{"type":"sample.Obj.Circle","fist":{"x":613.0,"y":57.0},"second":{"x":783.0,"y":149.0}},{"type":"sample.Obj.Triangle","fist":{"x":405.0,"y":79.0},"second":{"x":714.0,"y":260.0}}]
+[
+  {
+    "typeName": "sample.Obj.Rectangle",
+    "fist": {
+      "x": 188.0,
+      "y": 95.0
+    },
+    "second": {
+      "x": 694.0,
+      "y": 380.0
+    }
+  }
+]

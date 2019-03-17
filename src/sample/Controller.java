@@ -1,5 +1,4 @@
 package sample;
-
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.Gson;
@@ -7,9 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -19,15 +15,11 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import jdk.nashorn.internal.parser.JSONParser;
 import sample.Obj.*;
 import sample.Obj.Rectangle;
 
-import java.awt.*;
 import java.io.*;
-import java.util.ArrayList;
 
-import static com.sun.deploy.config.JREInfo.getAll;
 
 
 public class Controller {
@@ -166,7 +158,7 @@ public class Controller {
 
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(Figure.class, new JsonDeserializerWithInheritance<Figure>());
-        Gson gson = builder.create();
+        Gson gson = builder.setPrettyPrinting().create();
 
         String derivedClass1Json = gson.toJson(allFigure.getAll().toArray());
 
@@ -186,7 +178,8 @@ public class Controller {
 
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(Figure.class, new JsonDeserializerWithInheritance<Figure>());
-        Gson gson = builder.create();
+        Gson gson = builder.setPrettyPrinting().create();
+
 
 
         String json=ReadInStr("test.json");
@@ -217,10 +210,10 @@ public class Controller {
     }
 }
 
-class JsonDeserializerWithInheritance<T> implements JsonDeserializer<T> {
+class JsonDeserializerWithInheritance<Figure> implements JsonDeserializer<Figure> {
 
     @Override
-    public T deserialize(
+    public Figure deserialize(
             JsonElement json, Type typeOfT, JsonDeserializationContext context)
             throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
@@ -236,3 +229,4 @@ class JsonDeserializerWithInheritance<T> implements JsonDeserializer<T> {
         return context.deserialize(jsonObject, clazz);
     }
 }
+//Рефлексия!!!!!!!!!!! + проверка на корректност json

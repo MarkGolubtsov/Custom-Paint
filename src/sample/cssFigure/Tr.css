@@ -2,3 +2,4 @@
     -fx-cursor: hand;
     -fx-background-image:url("tr11.png");
 }
+.button:hover{}

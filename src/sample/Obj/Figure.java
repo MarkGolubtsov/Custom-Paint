@@ -3,6 +3,7 @@ package sample.Obj;
 
 import com.google.gson.annotations.SerializedName;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.paint.Color;
 import sample.Point;
 
 import java.io.Serializable;
@@ -32,7 +33,6 @@ public abstract   class Figure implements Serializable {
     }
 
     public Point fist= new Point();
-
     public Point second =new Point();
     public abstract   void Draw(Canvas canvas);
     public void   swap()
@@ -50,6 +50,5 @@ public abstract   class Figure implements Serializable {
         }
     }
     public  abstract Figure factor();
-
 
 }

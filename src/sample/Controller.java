@@ -5,9 +5,14 @@ import com.google.gson.Gson;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
@@ -15,6 +20,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import sample.Obj.*;
 import sample.Obj.Rectangle;
 
@@ -170,9 +177,16 @@ public class Controller {
 
         }
 
+    public void ErrorShow(String nameFxml) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(ModalController.class.getResource(nameFxml));
+        stage.setScene(new Scene(root));
+        stage.setTitle("RIP");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
 
-
-    public void ReadAll(ActionEvent actionEvent) throws FileNotFoundException {
+    public void ReadAll(ActionEvent actionEvent) throws IOException {
 
         clear();
 
@@ -185,11 +199,14 @@ public class Controller {
         String json=ReadInStr("test.json");
 
         Type itemsArrType = new TypeToken<Figure[]>() {}.getType();
-        Figure[] arrItemsDes = gson.fromJson(json, itemsArrType);
+        try {
+            Figure[] arrItemsDes = gson.fromJson(json, itemsArrType);
 
-        for (int i=0;i<arrItemsDes.length;i++)
-        {
-            allFigure.addFigure(arrItemsDes[i]);
+            for (int i = 0; i < arrItemsDes.length; i++) {
+                allFigure.addFigure(arrItemsDes[i]);
+            }
+        } catch (Exception e){
+            ErrorShow("err.fxml");
         }
 
         PaintAll();

@@ -5,18 +5,15 @@ import com.google.gson.Gson;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -32,17 +29,12 @@ import java.io.*;
 public class Controller {
     @FXML
     Canvas MainCanvas;
-
     @FXML
     Button Line1;
-
     @FXML
     ColorPicker GridColor;
     @FXML
-    Slider SliderS;
-    @FXML
     ColorPicker GridColorFill;
-
 
 
     private  AllFigure allFigure = new AllFigure();
@@ -63,23 +55,32 @@ public class Controller {
     public void handle(MouseEvent mouseEvent) {
            x1 =mouseEvent.getSceneX();
            y1=mouseEvent.getSceneY()-125;
+    }
 
-        }
-
+    public void setСoordinates(){
+        chose=chose.factor();
+        chose.fist.x=x1;
+        chose.fist.y=y1;
+        chose.second.x=x2;
+        chose.second.y=y2;
+    }
+    
     public void handle1(MouseEvent mouseEvent) {
-
             x2 = mouseEvent.getSceneX();
             y2 = mouseEvent.getSceneY()-125;
-            chose=chose.factor();
-            chose.fist.x=x1;
-            chose.fist.y=y1;
-            chose.second.x=x2;
-            chose.second.y=y2;
+            setСoordinates();
             chose.Draw(MainCanvas);
             allFigure.addFigure(chose);
-
-
     }
+
+    public void MovedMouse(MouseEvent mouseEvent) {
+        PaintAll();
+        x2 = mouseEvent.getSceneX();
+        y2 = mouseEvent.getSceneY()-125;
+        setСoordinates();
+        chose.Draw(MainCanvas);
+    }
+
     public  void clear()
     {
         MainCanvas.getGraphicsContext2D().clearRect(0,0,1000,681);
@@ -100,34 +101,27 @@ public class Controller {
     }
 
     public void ChooseLine(ActionEvent actionEvent) {
-
-        /*chose=allFigure.getLine();*/
         chose=new Line();
 
     }
 
 
     public void ChooseSquare(ActionEvent actionEvent) {
-        //chose=allFigure.getSquare();
         chose = new Square();
 
     }
 
     public void ChooseCircle(ActionEvent actionEvent) {
-        //chose=allFigure.getCircle();
        chose=new Circle();
 
     }
 
     public void ChooseRectangle(ActionEvent actionEvent) {
-
-        //chose=allFigure.getRectangle();
         chose= new Rectangle();
 
     }
     public void ChooseRightArrow(ActionEvent actionEvent) {
 
-        //chose=allFigure.getRightArrow();
         chose=new RightArrow();
 
     }
@@ -137,8 +131,7 @@ public class Controller {
         chose=new Triangle();
 
         }
-    public  void WriteInFile(String name,String content)
-    {
+    public  void WriteInFile(String name,String content) {
         try(FileWriter writer = new FileWriter(name, false))
         {
 
@@ -159,8 +152,6 @@ public class Controller {
         in.close();
         return s;
     }
-
-
     public void SaveAll(ActionEvent actionEvent) throws Exception {
 
         GsonBuilder builder = new GsonBuilder();
@@ -170,11 +161,6 @@ public class Controller {
         String derivedClass1Json = gson.toJson(allFigure.getAll().toArray());
 
         WriteInFile("test.json",derivedClass1Json);
-
-
-
-
-
         }
 
     public void ErrorShow(String nameFxml) throws IOException {
@@ -182,19 +168,17 @@ public class Controller {
         Parent root = FXMLLoader.load(ModalController.class.getResource(nameFxml));
         stage.setScene(new Scene(root));
         stage.setTitle("RIP");
+        stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
 
     public void ReadAll(ActionEvent actionEvent) throws IOException {
-
         clear();
 
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(Figure.class, new JsonDeserializerWithInheritance<Figure>());
         Gson gson = builder.setPrettyPrinting().create();
-
-
 
         String json=ReadInStr("test.json");
 
@@ -214,7 +198,7 @@ public class Controller {
     }
 
     public void PaintAll(){
-        MainCanvas.getGraphicsContext2D().clearRect(0,0,1000,681);
+        MainCanvas.getGraphicsContext2D().clearRect(0,0,MainCanvas.getWidth(),MainCanvas.getWidth());
         for(Figure h:allFigure.getAll())
             h.Draw(MainCanvas);
     }
@@ -223,8 +207,9 @@ public class Controller {
             allFigure.getAll().remove(allFigure.getAll().size()-1);
             PaintAll();
         }
-
     }
+
+
 }
 
 class JsonDeserializerWithInheritance<Figure> implements JsonDeserializer<Figure> {
@@ -246,4 +231,3 @@ class JsonDeserializerWithInheritance<Figure> implements JsonDeserializer<Figure
         return context.deserialize(jsonObject, clazz);
     }
 }
-//Рефлексия!!!!!!!!!!! + проверка на корректност json

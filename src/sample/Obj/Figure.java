@@ -3,7 +3,6 @@ package sample.Obj;
 
 import com.google.gson.annotations.SerializedName;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.paint.Color;
 import sample.Point;
 
 import java.io.Serializable;
@@ -12,7 +11,6 @@ public abstract   class Figure implements Serializable {
 
     @SerializedName("type")
     private String typeName;
-
     public Point getFist() {
         return fist;
     }
@@ -47,6 +45,7 @@ public abstract   class Figure implements Serializable {
             temp =second.x;
             second.x=fist.x;
             fist.x=temp;
+
         }
     }
     public  abstract Figure factor();

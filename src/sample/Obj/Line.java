@@ -6,7 +6,7 @@ public class Line extends Figure {
 
     @Override
     public void Draw(Canvas canvas) {
-      canvas.getGraphicsContext2D().strokeLine(fist.x,fist.y,second.x,second.y);
+        canvas.getGraphicsContext2D().strokeLine(fist.x,fist.y,second.x,second.y);
 
     }
 

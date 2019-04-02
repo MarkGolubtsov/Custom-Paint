@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -35,7 +35,7 @@
       </Pane>
       <Pane prefHeight="728.0" prefWidth="1000.0" style="-fx-background-color: white;">
          <children>
-            <Canvas fx:id="MainCanvas" height="681.0" layoutX="1.0" onMousePressed="#handle" onMouseReleased="#handle1" width="1000.0" />
+            <Canvas fx:id="MainCanvas" height="681.0" layoutX="1.0" onMouseDragged="#MovedMouse" onMousePressed="#handle" onMouseReleased="#handle1" width="1000.0" />
          </children>
       </Pane>
    </children>

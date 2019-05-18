@@ -23,7 +23,7 @@ public abstract   class Figure implements Serializable {
         return second;
     }
 
-    Figure(){
+    public  Figure(){
     typeName=getClass().getName();
     }
     public void setSecond(Point second) {

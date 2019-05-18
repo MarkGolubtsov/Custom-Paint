@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,42 +15,75 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Obj.*;
-import sample.Obj.Rectangle;
+import sample.load.PaintClassLoader;
 
 import java.io.*;
 
 
-
 public class Controller {
-    @FXML
+    @FXML    //аннотация 
     Canvas MainCanvas;
-    @FXML
-    Button Line1;
-    @FXML
-    ColorPicker GridColor;
-    @FXML
-    ColorPicker GridColorFill;
 
+
+
+    @FXML
+    Pane Pane1;
+
+
+    private List<Class<?>> classList = new ArrayList<>();
+    private List<Button> btnList = new ArrayList<>();
 
     private  AllFigure allFigure = new AllFigure();
-
+    private String modulePath ="D:\\University\\JAVA_project\\OOP\\1\\test\\";
     private  Figure chose;
 
     private double x1,y1,x2,y2;
 
     @FXML
     public void initialize() {
-        chose=new Line();
-        GridColor.setValue(Color.BLACK);
-        GridColorFill.setValue(Color.WHITE);
         MainCanvas.getGraphicsContext2D().setFill(Paint.valueOf("white"));
+
+        PaintClassLoader loader = new PaintClassLoader (modulePath,"sample.Obj", ClassLoader.getSystemClassLoader());
+        File dir = new File(modulePath);
+        String[] modules = dir.list();
+
+        for (String module: modules) {
+            try {
+                String moduleName = module.split(".class")[0];
+                Class clazz = loader.loadClass(moduleName);
+                classList.add(clazz);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        for (int i = 0; i < classList.size(); i++) {
+            System.out.println(classList.get(i).getName());
+            String btnName = classList.get(i).getName().substring(11);
+            btnList.add(new Button(btnName));
+            btnList.get(i).setPrefHeight(50);
+            btnList.get(i).setPrefWidth(90);
+            btnList.get(i).setLayoutY(33);
+            if (i == 0) {
+                btnList.get(i).setLayoutX(10);
+            } else
+                btnList.get(i).setLayoutX(100*i + 10);
+            final int e = i;
+            btnList.get(i).setOnAction(event -> {
+                try {
+                   chose = (Figure) classList.get(e).newInstance();
+                } catch (InstantiationException | IllegalAccessException e1) {
+                    e1.printStackTrace();
+                }
+            });
+            Pane1.getChildren().add(btnList.get(i));
+        }
+
     }
 
 
@@ -73,6 +108,7 @@ public class Controller {
             allFigure.addFigure(chose);
     }
 
+
     public void MovedMouse(MouseEvent mouseEvent) {
         PaintAll();
         x2 = mouseEvent.getSceneX();
@@ -91,46 +127,6 @@ public class Controller {
         clear();
     }
 
-    public void ColorSetPen(ActionEvent actionEvent) {
-        MainCanvas.getGraphicsContext2D().setStroke(GridColor.getValue());//контур
-
-    }
-
-    public void ColorSetFill(ActionEvent actionEvent) {
-        MainCanvas.getGraphicsContext2D().setFill(GridColorFill.getValue());//заливка
-    }
-
-    public void ChooseLine(ActionEvent actionEvent) {
-        chose=new Line();
-
-    }
-
-
-    public void ChooseSquare(ActionEvent actionEvent) {
-        chose = new Square();
-
-    }
-
-    public void ChooseCircle(ActionEvent actionEvent) {
-       chose=new Circle();
-
-    }
-
-    public void ChooseRectangle(ActionEvent actionEvent) {
-        chose= new Rectangle();
-
-    }
-    public void ChooseRightArrow(ActionEvent actionEvent) {
-
-        chose=new RightArrow();
-
-    }
-    public void ChooseTriangle(ActionEvent actionEvent) {
-
-        //chose=allFigure.getTriangle();
-        chose=new Triangle();
-
-        }
     public  void WriteInFile(String name,String content) {
         try(FileWriter writer = new FileWriter(name, false))
         {

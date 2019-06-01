@@ -1,8 +1,9 @@
 package sample.Obj;
 
 import javafx.scene.canvas.Canvas;
+import sample.Point;
 
-public class Square extends Figure {
+public class Square extends Figure  {
     @Override
     public void Draw(Canvas canvas) {
         swap();

@@ -7,10 +7,11 @@ import sample.Point;
 
 import java.io.Serializable;
 
-public abstract   class Figure implements Serializable {
+public abstract   class Figure implements Serializable ,Cloneable{
 
     @SerializedName("type")
     private String typeName;
+
     public Point getFist() {
         return fist;
     }
@@ -29,10 +30,10 @@ public abstract   class Figure implements Serializable {
     public void setSecond(Point second) {
         this.second = second;
     }
-
     public Point fist= new Point();
     public Point second =new Point();
     public abstract   void Draw(Canvas canvas);
+
     public void   swap()
     {
         double temp;

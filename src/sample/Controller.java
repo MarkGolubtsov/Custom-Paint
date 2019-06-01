@@ -4,17 +4,25 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.Gson;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
@@ -27,11 +35,10 @@ import java.io.*;
 
 
 public class Controller {
-    @FXML    //аннотация 
+    @FXML
     Canvas MainCanvas;
-
-
-
+    @FXML
+    MenuButton menuButton;
     @FXML
     Pane Pane1;
 
@@ -84,28 +91,75 @@ public class Controller {
             Pane1.getChildren().add(btnList.get(i));
         }
 
-    }
+        File catalog = new File("D:\\University\\JAVA_project\\OOP\\1\\src\\sample\\fig");
+        File[] allfile =catalog.listFiles();
+        for (int i = 0; i <allfile.length ; i++) {
+            String Name = Integer.toString(i+1);
+            MenuItem item1 = new MenuItem("Figure"+Name);
+            item1.setOnAction(event -> {
+                GsonBuilder builder = new GsonBuilder();
+                builder.registerTypeAdapter(Figure.class, new JsonDeserializerWithInheritance<Figure>());
+                Gson gson = builder.setPrettyPrinting().create();
 
+                String json= null;
+                try {
+                    json = ReadInStr("D:\\University\\JAVA_project\\OOP\\1\\src\\sample\\fig\\"+item1.getText()+".json");
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                Type itemsArrType = new TypeToken<Figure[]>() {}.getType();
+                try {
+                    Figure[] arrItemsDes = gson.fromJson(json, itemsArrType);
+                    chose = new PersonFigure();
+                    for (int j = 0; j < arrItemsDes.length; j++) {
+                        ((PersonFigure) chose).list.add(arrItemsDes[j]);
+                    }
+                } catch (Exception e){
+                    try {
+                        ErrorShow("err.fxml");
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
+            menuButton.getItems().add(item1);
+        }
+
+
+    }
 
     public void handle(MouseEvent mouseEvent) {
            x1 =mouseEvent.getSceneX();
            y1=mouseEvent.getSceneY()-125;
     }
+    public int CountPersonFigure()
+    {
+        int result=0;
+        File catalog = new File("D:\\University\\JAVA_project\\OOP\\1\\src\\sample\\fig");
+        File[] allfile =catalog.listFiles();
+        result=allfile.length;
+        return result;
+    }
 
     public void setСoordinates(){
-        chose=chose.factor();
-        chose.fist.x=x1;
-        chose.fist.y=y1;
-        chose.second.x=x2;
-        chose.second.y=y2;
+        if (chose!=null) {
+            chose = chose.factor();
+            chose.fist.x = x1;
+            chose.fist.y = y1;
+            chose.second.x = x2;
+            chose.second.y = y2;
+        }
     }
     
     public void handle1(MouseEvent mouseEvent) {
+        if (chose !=null) {
             x2 = mouseEvent.getSceneX();
-            y2 = mouseEvent.getSceneY()-125;
+            y2 = mouseEvent.getSceneY() - 125;
             setСoordinates();
             chose.Draw(MainCanvas);
             allFigure.addFigure(chose);
+            chose = chose.factor();
+        }
     }
 
 
@@ -114,12 +168,13 @@ public class Controller {
         x2 = mouseEvent.getSceneX();
         y2 = mouseEvent.getSceneY()-125;
         setСoordinates();
+        if (chose!=null)
         chose.Draw(MainCanvas);
     }
 
     public  void clear()
     {
-        MainCanvas.getGraphicsContext2D().clearRect(0,0,1000,681);
+        MainCanvas.getGraphicsContext2D().clearRect(0,0,MainCanvas.getWidth(),MainCanvas.getHeight());
         allFigure.getAll().clear();
     }
     public  void Clear(ActionEvent actionEvent)
@@ -205,8 +260,50 @@ public class Controller {
         }
     }
 
+    public void setPersonFigure(ActionEvent actionEvent) {
+        chose = new PersonFigure();
+        for (Figure figure:
+        allFigure.getAll()) {
+            ((PersonFigure) chose).list.add(figure);
+        }
+        Class a = chose.getClass();
+        String Name = Integer.toString(CountPersonFigure()+1);
+        MenuItem item1 = new MenuItem("Figure"+Name);
+        item1.setOnAction(event -> {
+            GsonBuilder builder = new GsonBuilder();
+            builder.registerTypeAdapter(Figure.class, new JsonDeserializerWithInheritance<Figure>());
+            Gson gson = builder.setPrettyPrinting().create();
+            String json= null;
+            try {
+                json = ReadInStr("D:\\University\\JAVA_project\\OOP\\1\\src\\sample\\fig\\Figure"+Name+".json");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Type itemsArrType = new TypeToken<Figure[]>() {}.getType();
+            try {
+                Figure[] arrItemsDes = gson.fromJson(json, itemsArrType);
+                chose = new PersonFigure();
+                for (int i = 0; i < arrItemsDes.length; i++) {
+                    ((PersonFigure) chose).list.add(arrItemsDes[i]);
+                }
+            } catch (Exception e){
+                try {
+                    ErrorShow("err.fxml");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        menuButton.getItems().add(item1);
+        GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(Figure.class, new JsonDeserializerWithInheritance<Figure>());
+        Gson gson = builder.setPrettyPrinting().create();
+        String derivedClass1Json = gson.toJson(((PersonFigure) chose).list.toArray());
+        WriteInFile("D:\\University\\JAVA_project\\OOP\\1\\src\\sample\\fig\\Figure"+Name+".json",derivedClass1Json);
+    }
 
-}
+    }
+
 
 class JsonDeserializerWithInheritance<Figure> implements JsonDeserializer<Figure> {
 

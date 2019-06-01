@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -9,16 +9,18 @@
    <children>
       <Pane prefHeight="167.0" prefWidth="1000.0" style="-fx-background-color: silver;">
          <children>
-            <Button layoutX="847.0" layoutY="65.0" mnemonicParsing="false" onAction="#Clear" prefHeight="43.0" prefWidth="106.0" styleClass="buttonClear" stylesheets="@cssButton/button.css" text="Очистить" />
-            <Button layoutX="847.0" layoutY="13.0" mnemonicParsing="false" onAction="#SaveAll" prefHeight="43.0" prefWidth="106.0" styleClass="buttonSave" stylesheets="@cssButton/button.css" text="Сохранить" />
-            <Button layoutX="728.0" layoutY="13.0" mnemonicParsing="false" onAction="#ReadAll" prefHeight="43.0" prefWidth="106.0" styleClass="button1" stylesheets="@cssButton/button.css" text="Загрузить" />
-            <Button layoutX="738.0" layoutY="65.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="43.0" prefWidth="96.0" styleClass="buttonClear" stylesheets="@cssButton/button.css" text="Отмена" />
+            <Button layoutX="886.0" layoutY="65.0" mnemonicParsing="false" onAction="#Clear" prefHeight="43.0" prefWidth="106.0" styleClass="buttonClear" stylesheets="@cssButton/button.css" text="Очистить" />
+            <Button layoutX="872.0" layoutY="13.0" mnemonicParsing="false" onAction="#SaveAll" prefHeight="43.0" prefWidth="106.0" styleClass="buttonSave" stylesheets="@cssButton/button.css" text="Сохранить" />
+            <Button layoutX="766.0" layoutY="13.0" mnemonicParsing="false" onAction="#ReadAll" prefHeight="43.0" prefWidth="106.0" styleClass="button1" stylesheets="@cssButton/button.css" text="Загрузить" />
+            <Button layoutX="771.0" layoutY="65.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="43.0" prefWidth="96.0" styleClass="buttonClear" stylesheets="@cssButton/button.css" text="Отмена" />
             <Pane fx:id="Pane1" layoutX="-1.0" layoutY="-2.0" prefHeight="128.0" prefWidth="669.0" />
+            <Button fx:id="PersonFigureDraw" layoutX="638.0" layoutY="91.0" mnemonicParsing="false" onAction="#setPersonFigure" prefHeight="20.0" prefWidth="100.0" text="Добавить" />
+            <MenuButton fx:id="menuButton" layoutX="648.0" layoutY="43.0" mnemonicParsing="false" text="Ваши фигуры" />
          </children>
       </Pane>
       <Pane prefHeight="728.0" prefWidth="1000.0" style="-fx-background-color: white;">
          <children>
-            <Canvas fx:id="MainCanvas" height="681.0" layoutX="1.0" onMouseDragged="#MovedMouse" onMousePressed="#handle" onMouseReleased="#handle1" width="1000.0" />
+            <Canvas fx:id="MainCanvas" height="681.0" layoutX="6.0" onMouseDragged="#MovedMouse" onMousePressed="#handle" onMouseReleased="#handle1" width="1000.0" />
          </children>
       </Pane>
    </children>

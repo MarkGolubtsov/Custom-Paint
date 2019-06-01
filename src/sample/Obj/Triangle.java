@@ -1,6 +1,7 @@
 package sample.Obj;
 
 import javafx.scene.canvas.Canvas;
+import sample.Point;
 
 public class Triangle extends Figure {
     @Override

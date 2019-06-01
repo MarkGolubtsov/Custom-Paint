@@ -1,8 +1,9 @@
 package sample.Obj;
 
 import javafx.scene.canvas.Canvas;
+import sample.Point;
 
-public class Circle extends Figure {
+public class Circle extends Figure{
 
     @Override
     public void Draw(Canvas canvas) {
@@ -14,7 +15,6 @@ public class Circle extends Figure {
     public Figure factor() {
         return new Circle();
     }
-
 
 
 

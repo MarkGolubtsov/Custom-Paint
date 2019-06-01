@@ -1,6 +1,7 @@
 package sample.Obj;
 
 import javafx.scene.canvas.Canvas;
+import sample.Point;
 
 public class RightArrow extends Figure {
     @Override
@@ -21,5 +22,19 @@ public class RightArrow extends Figure {
     @Override
     public Figure factor() {
         return new RightArrow();
+    }
+
+    @Override
+    public RightArrow clone() {
+        RightArrow res = new RightArrow();
+        Point fist1 = new Point();
+        fist1.x=this.fist.x;
+        fist1.y=this.fist.y;
+        res.fist=fist1;
+        Point s1 = new Point();
+        s1.x=this.second.x;
+        s1.y=this.second.y;
+        res.second=s1;
+        return res;
     }
 }

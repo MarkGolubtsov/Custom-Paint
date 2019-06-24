@@ -50,6 +50,8 @@ public class Controller {
     private String modulePath ="D:\\University\\JAVA_project\\OOP\\1\\test\\";
     private  Figure chose;
 
+
+
     private double x1,y1,x2,y2;
 
     @FXML
@@ -164,12 +166,15 @@ public class Controller {
 
 
     public void MovedMouse(MouseEvent mouseEvent) {
-        PaintAll();
-        x2 = mouseEvent.getSceneX();
-        y2 = mouseEvent.getSceneY()-125;
-        setСoordinates();
-        if (chose!=null)
-        chose.Draw(MainCanvas);
+
+
+        if (chose!=null) {
+            PaintAll();
+            x2 = mouseEvent.getSceneX();
+            y2 = mouseEvent.getSceneY() - 125;
+            setСoordinates();
+            chose.Draw(MainCanvas);
+        }
     }
 
     public  void clear()

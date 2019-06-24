@@ -1,13 +1,37 @@
 [
   {
-    "type": "sample.Obj.Square",
+    "list": [
+      {
+        "type": "sample.Obj.Line",
+        "fist": {
+          "x": 135.0,
+          "y": 30.0
+        },
+        "second": {
+          "x": 438.0,
+          "y": 201.0
+        }
+      },
+      {
+        "type": "sample.Obj.Line",
+        "fist": {
+          "x": 415.0,
+          "y": 49.0
+        },
+        "second": {
+          "x": 172.0,
+          "y": 193.0
+        }
+      }
+    ],
+    "type": "sample.Obj.PersonFigure",
     "fist": {
-      "x": 404.0,
-      "y": 104.0
+      "x": 399.0,
+      "y": 119.0
     },
     "second": {
-      "x": 626.0,
-      "y": 302.0
+      "x": 756.0,
+      "y": 409.0
     }
   }
 ]

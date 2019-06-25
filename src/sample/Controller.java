@@ -132,7 +132,7 @@ public class Controller {
 
     public void handle(MouseEvent mouseEvent) {
            x1 =mouseEvent.getSceneX();
-           y1=mouseEvent.getSceneY()-125;
+           y1=mouseEvent.getSceneY()-Pane1.getHeight();
     }
     public int CountPersonFigure()
     {
@@ -156,7 +156,7 @@ public class Controller {
     public void handle1(MouseEvent mouseEvent) {
         if (chose !=null) {
             x2 = mouseEvent.getSceneX();
-            y2 = mouseEvent.getSceneY() - 125;
+            y2 = mouseEvent.getSceneY() - Pane1.getHeight();
             setСoordinates();
             chose.Draw(MainCanvas);
             allFigure.addFigure(chose);
@@ -171,7 +171,7 @@ public class Controller {
         if (chose!=null) {
             PaintAll();
             x2 = mouseEvent.getSceneX();
-            y2 = mouseEvent.getSceneY() - 125;
+            y2 = mouseEvent.getSceneY() - Pane1.getHeight();
             setСoordinates();
             chose.Draw(MainCanvas);
         }

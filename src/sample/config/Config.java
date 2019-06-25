@@ -11,23 +11,30 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Config {
 
     public Config(){}
+    private int width, height;
 
     @Override
     public String toString() {
         return "Configuration{" +
-                "width=" + color.toString()+
+                "width=" + width +
+                ", height=" + height +
                 '}';
     }
 
-    public Color getColor() {
-        return color;
+    public int getWidth() {
+        return width;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    public void setWidth(int width) {
+        this.width = width;
     }
 
-    private Color color;
+    public int getHeight() {
+        return height;
+    }
 
+    public void setHeight(int height) {
+        this.height = height;
+    }
 
 }

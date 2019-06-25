@@ -1,37 +1,59 @@
 [
   {
+    "type": "sample.Obj.RightArrow",
+    "fist": {
+      "x": 238.0,
+      "y": 99.0
+    },
+    "second": {
+      "x": 420.0,
+      "y": 225.0
+    }
+  },
+  {
+    "type": "sample.Obj.RightArrow",
+    "fist": {
+      "x": 663.0,
+      "y": 197.0
+    },
+    "second": {
+      "x": 777.0,
+      "y": 280.0
+    }
+  },
+  {
     "list": [
       {
-        "type": "sample.Obj.Line",
+        "type": "sample.Obj.RightArrow",
         "fist": {
-          "x": 135.0,
-          "y": 30.0
+          "x": 238.0,
+          "y": 99.0
         },
         "second": {
-          "x": 438.0,
-          "y": 201.0
+          "x": 420.0,
+          "y": 225.0
         }
       },
       {
-        "type": "sample.Obj.Line",
+        "type": "sample.Obj.RightArrow",
         "fist": {
-          "x": 415.0,
-          "y": 49.0
+          "x": 663.0,
+          "y": 197.0
         },
         "second": {
-          "x": 172.0,
-          "y": 193.0
+          "x": 777.0,
+          "y": 280.0
         }
       }
     ],
     "type": "sample.Obj.PersonFigure",
     "fist": {
-      "x": 399.0,
-      "y": 119.0
+      "x": 251.0,
+      "y": 45.0
     },
     "second": {
-      "x": 756.0,
-      "y": 409.0
+      "x": 909.0,
+      "y": 419.0
     }
   }
 ]
